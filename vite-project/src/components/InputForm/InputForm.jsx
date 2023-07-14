@@ -1,41 +1,43 @@
-import Card from "../UI/Card/Card";
-import Button from "../UI/Card/Button/Button";
+import Card from "../../shared/Card/Card";
+import Button from "../../shared/Button/Button";
+import Form from "./Elements";
 import { useState } from "react";
-const InputForm = (props) => {
-  const [username, setUsername] = useState("");
-  const [age, setAge] = useState("");
+
+const InputForm = ({ onSubmitForm }) => {
+  const [enteredData, setEnteredData] = useState({
+    username: "",
+    age: "",
+  });
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-
-    const userInput = {
-      "username": username,
-      "age": age,
-    };
-    props.onSubmitForm(userInput);
+    // const userInput = {
+    //   username: userData.username,
+    //   age: userData.age,
+    // };
+    // console.log(userInput);
+    onSubmitForm(enteredData);
   };
 
-  const inputChangeHandler = (id, value) => {
-    if (id === "username") {
-      setUsername(value);
-    } else {
-      setAge(value);
-    }
+  const inputChangeHandler = (event) => {
+    const value = event.target.value;
+    return setEnteredData((prevState) => ({
+      ...prevState,
+      [event.target.name]: value,
+    }));
   };
 
   return (
     <Card>
-      <form onSubmit={onSubmitHandler}>
+      <Form onSubmit={onSubmitHandler}>
         <div>
           <label htmlFor="username-id">Username</label>
           <input
             type="text"
             name="username"
             id="username-id"
-            value={username}
-            onChange={(event) => {
-              inputChangeHandler("username", event.target.value);
-            }}
+            value={enteredData.username}
+            onChange={inputChangeHandler}
           />
         </div>
         <div>
@@ -44,14 +46,12 @@ const InputForm = (props) => {
             type="number"
             name="age"
             id="age-id"
-            value={age}
-            onChange={(event) => {
-              inputChangeHandler("age", event.target.value);
-            }}
+            value={enteredData.age}
+            onChange={inputChangeHandler}
           />
         </div>
         <Button type="submit">Add User</Button>
-      </form>
+      </Form>
     </Card>
   );
 };

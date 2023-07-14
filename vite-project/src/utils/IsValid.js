@@ -1,9 +1,9 @@
-export const IsAgeValid = (userInput) => {
-  return userInput > 0 ? true : false ;
+export const isAgeValid = (userInput) => {
+  return userInput > 0;
 };
 
-export const IsObjectValid = (userInput) => {
-  for (let key in userInput) {
+export const isObjectValid = (userInput) => {
+  for (const key in userInput) {
     if (userInput[key] === "") {
       return false;
     }

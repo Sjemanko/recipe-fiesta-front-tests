@@ -4,17 +4,18 @@ import {
   ModalContentSection,
   ModalHeader,
 } from "./Elements";
+import Button from "../../shared/Button/Button";
 
-const Modal = (props) => {
+const Modal = ({showed, closeModal, errorMessage}) => {
   return (
-    <ModalContainer isShowed={props.showed} onClick={props.closeModal}>
+    <ModalContainer isShowed={showed} onClick={closeModal}>
       <ModalContentSection onClick={(event) => event.stopPropagation()}>
         <ModalHeader>
-          <h2>{props.errorMessage[0]}</h2>
+          <h2>{errorMessage[0]}</h2>
         </ModalHeader>
-        <p>{props.errorMessage[1]}</p>
+        <p>{errorMessage[1]}</p>
         <ModalActions>
-          <button onClick={props.closeModal}>Close</button>
+          <Button onClick={closeModal}>Close</Button>
         </ModalActions>
       </ModalContentSection>
     </ModalContainer>

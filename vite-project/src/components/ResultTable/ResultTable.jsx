@@ -1,12 +1,12 @@
-import Card from "../UI/Card/Card";
-
-const ResultTable = (props) => {
+import Card from "../../shared/Card/Card";
+import { RowResultComponent } from "./Elements";
+const ResultTable = ({userData}) => {
   return (
     <Card>
-      {props.userData.map((item) => (
-        <p>
+      {userData.map((item) => (
+        <RowResultComponent key={Math.random()}>
           {item.username} ({item.age} years old)
-        </p>
+        </RowResultComponent>
       ))}
     </Card>
   );

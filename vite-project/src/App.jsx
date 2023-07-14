@@ -3,7 +3,7 @@ import InputForm from "./components/InputForm/InputForm";
 import ResultTable from "./components/ResultTable/ResultTable";
 import Modal from "./components/Modal/Modal";
 import { useState } from "react";
-import { IsObjectValid, IsAgeValid } from "./utils/IsValid";
+import { isObjectValid, isAgeValid } from "./utils/IsValid";
 
 function App() {
   const [isShowed, setIsShowed] = useState(false);
@@ -11,14 +11,14 @@ function App() {
   const [userData, setUserData] = useState([]);
 
   const processUserInput = (userInput) => {
-    if (!IsObjectValid(userInput)) {
+    if (!isObjectValid(userInput)) {
       setErrorMessage([
         "Empty Input",
         "Please try to enter all required data.",
       ]);
       return setIsShowed(true);
     }
-    if (!IsAgeValid(parseInt(userInput.age))) {
+    if (!isAgeValid(parseInt(userInput.age))) {
       setErrorMessage(["Invalid Age Input", "Please enter age > 0."]);
       return setIsShowed(true);
     }
@@ -26,7 +26,7 @@ function App() {
     setUserData((prevState) => [...prevState, userInput]);
   };
 
-  let isUserDataEmpty = userData.length === 0 ? true : false;
+  const isUserDataEmpty = userData.length === 0;
 
   return (
     <div>

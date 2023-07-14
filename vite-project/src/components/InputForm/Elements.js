@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-const StyledCard = styled.div`
-  padding: 10px 16px;
-  background-color: white;
-  border-radius: 12px;
-  margin: 5% 25%;
-
+const Form = styled.form`
   & div {
     display: flex;
     flex-direction: column;
@@ -31,11 +26,6 @@ const StyledCard = styled.div`
   & input:focus {
     border: 2px solid black;
   }
-
-  & p {
-    border: 1px solid black;
-    padding: 1%;
-  }
 `;
 
-export default StyledCard;
+export default Form;

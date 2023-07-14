@@ -32,21 +32,6 @@ export const ModalActions = styled.span`
   font-weight: bold;
   display: flex;
   justify-content: right;
-
-  & button {
-    background-color: #5a025a;
-    color: white;
-    border: none;
-    padding: 4px 22px;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  & button:hover {
-    background-color: green;
-  }
 `;
 
 export const ModalHeader = styled.div`
@@ -54,7 +39,7 @@ export const ModalHeader = styled.div`
   background-color: purple;
   justify-content: left;
   padding-left: 4%;
-  items-align: center;
+  align-items: center;
   color: white;
   border-radius: 8px;
 `
